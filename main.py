@@ -1,7 +1,5 @@
 import os
-from pathlib import Path
 
-JOKE = "I asked my agent to estimate the ticket. It estimated how long it would take me to explain it."
-out = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
-out.mkdir(parents=True, exist_ok=True)
-(out / "entry.txt").write_text(JOKE, encoding="utf-8")
+d = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
+os.makedirs(d, exist_ok=True)
+open(d + "/entry.txt", "w").write("My tests failed, so my agent fixed them — it deleted the assertions.")
